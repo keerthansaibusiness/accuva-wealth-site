@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)file:///C:/Users/keert/Downloads/accuva-wealth-website_1.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accuva Wealth — AI Wealth Analyst Platform</title>
+<meta name="description" content="Accuva Wealth is an AI-powered wealth and asset management platform built for professional financial advisors and portfolio managers.">
+<link href="./Index_files/css2" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+:root {
+  --gold: #B8922A;
+  --gold-light: #D4AC4A;
+  --gold-pale: #F5EDD8;
+  --black: #0D0D0D;
+  --dark: #1A1A1A;
+  --mid: #4A4A4A;
+  --soft: #888;
+  --border: #E2E2E2;
+  --bg: #FAFAFA;
+  --white: #FFFFFF;
+  --green: #1A7A4A;
+  --red: #B03030;
+}
+body {
+  background: var(--white);
+  color: var(--dark);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 5vw;
+  height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; }
+.nav-logo-mark {
+  width: 30px; height: 30px;
+  background: var(--gold);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem; color: white;
+}
+.nav-logo-name {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.82rem; font-weight: 500;
+  color: var(--black); letter-spacing: 0.1em;
+}
+.nav-center {
+  display: flex; gap: 2.5rem;
+}
+.nav-center a {
+  font-size: 0.82rem; color: var(--soft);
+  text-decoration: none; font-weight: 400;
+  transition: color 0.2s; letter-spacing: 0.02em;
+}
+.nav-center a:hover { color: var(--black); }
+.nav-right { display: flex; align-items: center; gap: 1rem; }
+.nav-link { font-size: 0.82rem; color: var(--mid); text-decoration: none; }
+.nav-link:hover { color: var(--black); }
+.nav-cta {
+  background: var(--gold); color: white;
+  padding: 0.5rem 1.4rem; border-radius: 6px;
+  font-size: 0.78rem; font-weight: 500;
+  text-decoration: none; letter-spacing: 0.04em;
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: var(--gold-light); }
+
+/* TICKER */
+.ticker-bar {
+  margin-top: 64px;
+  background: var(--black);
+  overflow: hidden; position: relative; padding: 0.55rem 0;
+}
+.ticker-track {
+  display: flex; width: max-content;
+  animation: tickscroll 40s linear infinite;
+}
+@keyframes tickscroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.tick {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  padding: 0 2rem; border-right: 1px solid rgba(255,255,255,0.08);
+}
+.t-sym { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; font-weight: 500; color: #888; }
+.t-price { font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; color: #ddd; }
+.t-up { font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; color: #4CAF87; }
+.t-dn { font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; color: #E07070; }
+.tf { position:absolute;top:0;bottom:0;width:80px;z-index:2; pointer-events:none; }
+.tf-l { left:0; background:linear-gradient(to right,#0D0D0D,transparent); }
+.tf-r { right:0; background:linear-gradient(to left,#0D0D0D,transparent); }
+
+/* HERO */
+.hero {
+  padding: 7rem 5vw 6rem;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 6rem; align-items: center;
+  border-bottom: 1px solid var(--border);
+  background: var(--white);
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem; color: var(--gold);
+  letter-spacing: 0.15em; text-transform: uppercase;
+  margin-bottom: 1.8rem; border-bottom: 1px solid var(--gold-pale);
+  padding-bottom: 0.5rem;
+}
+.hero h1 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
+  color: var(--black); line-height: 1.2;
+  font-weight: 700; margin-bottom: 1.4rem;
+}
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero-desc {
+  font-size: 1rem; line-height: 1.9;
+  color: var(--mid); max-width: 480px; margin-bottom: 2.4rem;
+}
+.hero-btns { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+.btn-dark {
+  background: var(--black); color: white;
+  padding: 0.85rem 2rem; border-radius: 6px;
+  font-size: 0.82rem; font-weight: 500;
+  text-decoration: none; transition: background 0.2s;
+  letter-spacing: 0.02em;
+}
+.btn-dark:hover { background: var(--dark); }
+.btn-outline {
+  border: 1px solid var(--border); color: var(--mid);
+  padding: 0.85rem 2rem; border-radius: 6px;
+  font-size: 0.82rem; text-decoration: none;
+  transition: all 0.2s; letter-spacing: 0.02em;
+}
+.btn-outline:hover { border-color: var(--black); color: var(--black); }
+
+/* HERO RIGHT — CARD */
+.hero-card {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 16px; overflow: hidden;
+  box-shadow: 0 4px 40px rgba(0,0,0,0.06);
+}
+.hc-top {
+  background: var(--black); padding: 1rem 1.4rem;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.hc-title { font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; color: #888; letter-spacing: 0.12em; }
+.hc-live { display: flex; align-items: center; gap: 0.4rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.58rem; color: #4CAF87; }
+.hc-dot { width: 5px; height: 5px; border-radius: 50%; background: #4CAF87; box-shadow: 0 0 6px #4CAF87; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+.hc-body { padding: 1.4rem; }
+.hc-msg { margin-bottom: 1rem; }
+.hc-from { font-family: 'IBM Plex Mono', monospace; font-size: 0.58rem; color: var(--soft); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.35rem; }
+.hc-bubble {
+  background: white; border: 1px solid var(--border);
+  border-radius: 8px; padding: 0.75rem 0.95rem;
+  font-size: 0.82rem; color: var(--dark); line-height: 1.6;
+}
+.hc-bubble.ai-bubble {
+  background: var(--gold-pale); border-color: #E8D5A0;
+}
+.ai-resp { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; line-height: 1.9; }
+.ai-head { color: var(--gold); font-weight: 500; }
+.ai-pt { color: var(--mid); }
+.ai-pt::before { content: "↳ "; color: var(--gold); }
+.ai-v { color: var(--green); border-top: 1px solid #D4C080; margin-top: 0.5rem; padding-top: 0.5rem; font-weight: 500; }
+.cursor { display:inline-block;width:6px;height:11px;background:var(--gold);animation:blink 1s step-end infinite;vertical-align:middle;margin-left:2px; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+/* STATS ROW */
+.stats-row {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  border-bottom: 1px solid var(--border);
+}
+.stat-box {
+  padding: 2.5rem 5vw;
+  border-right: 1px solid var(--border);
+}
+.stat-box:last-child { border-right: none; }
+.stat-num {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 2.4rem; font-weight: 700; color: var(--black);
+  margin-bottom: 0.3rem;
+}
+.stat-num span { color: var(--gold); }
+.stat-lbl { font-size: 0.8rem; color: var(--soft); }
+
+/* SECTIONS */
+section { padding: 6rem 5vw; }
+.eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 0.2em;
+  color: var(--gold); text-transform: uppercase; margin-bottom: 0.8rem;
+}
+h2 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  color: var(--black); line-height: 1.25; margin-bottom: 1rem;
+  font-weight: 700;
+}
+h2 em { font-style: italic; color: var(--gold); }
+.section-sub { font-size: 0.95rem; line-height: 1.85; color: var(--mid); max-width: 520px; }
+
+/* FEATURES */
+.features-section { background: var(--bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.feat-grid {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 1.5rem; margin-top: 3.5rem;
+}
+.feat-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 12px; padding: 1.8rem;
+  transition: box-shadow 0.25s, border-color 0.25s;
+}
+.feat-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.07); border-color: #CCC; }
+.feat-icon {
+  width: 40px; height: 40px; border-radius: 8px;
+  background: var(--gold-pale); color: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; margin-bottom: 1.1rem;
+}
+.feat-title {
+  font-weight: 500; font-size: 0.88rem;
+  color: var(--black); margin-bottom: 0.5rem;
+}
+.feat-desc { font-size: 0.82rem; line-height: 1.75; color: var(--soft); }
+
+/* HOW IT WORKS */
+.how-grid {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 0; margin-top: 3.5rem;
+  border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+}
+.how-step {
+  padding: 2rem 1.8rem;
+  border-right: 1px solid var(--border);
+  background: var(--white);
+  transition: background 0.2s;
+}
+.how-step:last-child { border-right: none; }
+.how-step:hover { background: var(--bg); }
+.step-n {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 2.5rem; font-weight: 700;
+  color: var(--gold-pale); margin-bottom: 1rem; line-height: 1;
+}
+.step-t { font-weight: 500; font-size: 0.88rem; color: var(--black); margin-bottom: 0.5rem; }
+.step-d { font-size: 0.82rem; line-height: 1.75; color: var(--soft); }
+
+/* TWO COL */
+.two-col {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 6rem; align-items: center;
+}
+
+/* NEWS */
+.news-list { display: flex; flex-direction: column; gap: 0; }
+.news-item {
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--border);
+  display: flex; gap: 1.2rem; align-items: flex-start;
+  transition: background 0.2s; cursor: default;
+}
+.news-item:first-child { border-top: 1px solid var(--border); }
+.news-src {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem; color: var(--gold); letter-spacing: 0.08em;
+  text-transform: uppercase; min-width: 80px; margin-top: 0.1rem;
+}
+.news-hl { font-size: 0.85rem; color: var(--dark); line-height: 1.55; }
+
+/* CAPABILITY LIST */
+.cap-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.8rem; }
+.cap-item {
+  display: flex; gap: 1rem; align-items: flex-start;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--border); border-radius: 8px;
+  transition: border-color 0.2s;
+}
+.cap-item:hover { border-color: #CCC; }
+.cap-arrow { color: var(--gold); font-size: 0.75rem; margin-top: 0.15rem; flex-shrink: 0; }
+.cap-txt { font-size: 0.85rem; line-height: 1.6; color: var(--mid); }
+.cap-txt strong { color: var(--black); font-weight: 500; }
+
+/* CTA BAND */
+.cta-band {
+  background: var(--black); padding: 6rem 5vw;
+  text-align: center;
+}
+.cta-band h2 { color: white; margin: 0 auto 1rem; max-width: 560px; }
+.cta-band h2 em { color: var(--gold-light); }
+.cta-band .section-sub { color: #666; margin: 0 auto 2.5rem; text-align: center; }
+.cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn-gold-solid {
+  background: var(--gold); color: white;
+  padding: 0.9rem 2.2rem; border-radius: 6px;
+  font-size: 0.85rem; font-weight: 500;
+  text-decoration: none; transition: background 0.2s;
+}
+.btn-gold-solid:hover { background: var(--gold-light); }
+.btn-white-outline {
+  border: 1px solid rgba(255,255,255,0.2); color: #aaa;
+  padding: 0.9rem 2.2rem; border-radius: 6px;
+  font-size: 0.85rem; text-decoration: none; transition: all 0.2s;
+}
+.btn-white-outline:hover { border-color: rgba(255,255,255,0.5); color: white; }
+
+/* FOOTER */
+footer {
+  background: var(--bg); border-top: 1px solid var(--border);
+  padding: 3rem 5vw;
+}
+.footer-top {
+  display: flex; justify-content: space-between;
+  align-items: flex-start; flex-wrap: wrap; gap: 2rem;
+  padding-bottom: 2rem; border-bottom: 1px solid var(--border);
+  margin-bottom: 1.5rem;
+}
+.footer-brand .logo-name { font-size: 0.9rem; margin-bottom: 0.5rem; display: block; }
+.footer-brand p { font-size: 0.8rem; color: var(--soft); max-width: 280px; line-height: 1.7; }
+.footer-col-title { font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; color: var(--black); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.8rem; font-weight: 500; }
+.footer-col a { display: block; font-size: 0.82rem; color: var(--soft); text-decoration: none; margin-bottom: 0.4rem; transition: color 0.2s; }
+.footer-col a:hover { color: var(--black); }
+.footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+.footer-copy { font-size: 0.75rem; color: #bbb; }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .feat-grid { grid-template-columns: repeat(2,1fr); }
+  .how-grid { grid-template-columns: repeat(2,1fr); }
+  .how-step:nth-child(2) { border-right: none; }
+  .how-step:nth-child(1), .how-step:nth-child(2) { border-bottom: 1px solid var(--border); }
+  .stats-row { grid-template-columns: repeat(2,1fr); }
+  .stat-box:nth-child(2) { border-right: none; }
+  .stat-box:nth-child(1), .stat-box:nth-child(2) { border-bottom: 1px solid var(--border); }
+}
+@media (max-width: 768px) {
+  .hero { grid-template-columns: 1fr; gap: 3rem; }
+  .hero-right { display: none; }
+  .two-col { grid-template-columns: 1fr; gap: 3rem; }
+  .nav-center { display: none; }
+  .feat-grid { grid-template-columns: 1fr; }
+  .how-grid { grid-template-columns: 1fr; border-radius: 12px; }
+  .how-step { border-right: none; border-bottom: 1px solid var(--border); }
+  .how-step:last-child { border-bottom: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="file:///C:/Users/keert/Downloads/accuva-wealth-website_1.html#" class="nav-logo">
+    <div class="nav-logo-mark">⬡</div>
+    <div class="nav-logo-name">ACCUVA WEALTH</div>
+  </a>
+  <div class="nav-center">
+    <a href="file:///C:/Users/keert/Downloads/accuva-wealth-website_1.html#features">Features</a>
+    <a href="file:///C:/Users/keert/Downloads/accuva-wealth-website_1.html#how">How It Works</a>
+    <a href="file:///C:/Users/keert/Downloads/accuva-wealth-website_1.html#news">Live Data</a>
+    <a href="file:///C:/Users/keert/Downloads/accuva-wealth-website_1.html#capabilities">Capabilities</a>
+  </div>
+  <div class="nav-right">
+    <a href="https://console.groq.com/" target="_blank" class="nav-link">Get API Key</a>
+    <a href="https://accuva-wealth.vercel.app/" target="_blank" class="nav-cta">Launch Platform →</a>
+  </div>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker-bar">
+  <div class="tf tf-l"></div>
+  <div class="tf tf-r"></div>
+  <div class="ticker-track">
+    <div class="tick"><span class="t-sym">S&amp;P 500</span><span class="t-price">5,842.10</span><span class="t-up">▲ +0.84%</span></div>
+    <div class="tick"><span class="t-sym">NASDAQ</span><span class="t-price">18,310.45</span><span class="t-up">▲ +1.12%</span></div>
+    <div class="tick"><span class="t-sym">DOW</span><span class="t-price">42,680.20</span><span class="t-up">▲ +0.45%</span></div>
+    <div class="tick"><span class="t-sym">AAPL</span><span class="t-price">228.40</span><span class="t-up">▲ +1.34%</span></div>
+    <div class="tick"><span class="t-sym">NVDA</span><span class="t-price">132.60</span><span class="t-up">▲ +2.18%</span></div>
+    <div class="tick"><span class="t-sym">MSFT</span><span class="t-price">415.20</span><span class="t-up">▲ +0.72%</span></div>
+    <div class="tick"><span class="t-sym">TSLA</span><span class="t-price">298.70</span><span class="t-dn">▼ -0.92%</span></div>
+    <div class="tick"><span class="t-sym">META</span><span class="t-price">592.30</span><span class="t-up">▲ +1.05%</span></div>
+    <div class="tick"><span class="t-sym">BTC</span><span class="t-price">94,210</span><span class="t-up">▲ +3.41%</span></div>
+    <div class="tick"><span class="t-sym">GOLD</span><span class="t-price">2,980.50</span><span class="t-up">▲ +0.28%</span></div>
+    <div class="tick"><span class="t-sym">JPM</span><span class="t-price">242.10</span><span class="t-dn">▼ -0.18%</span></div>
+    <div class="tick"><span class="t-sym">GS</span><span class="t-price">518.40</span><span class="t-up">▲ +0.55%</span></div>
+    <div class="tick"><span class="t-sym">XOM</span><span class="t-price">118.20</span><span class="t-up">▲ +0.33%</span></div>
+    <div class="tick"><span class="t-sym">ETH</span><span class="t-price">3,840</span><span class="t-up">▲ +2.10%</span></div>
+    <!-- duplicate for loop -->
+    <div class="tick"><span class="t-sym">S&amp;P 500</span><span class="t-price">5,842.10</span><span class="t-up">▲ +0.84%</span></div>
+    <div class="tick"><span class="t-sym">NASDAQ</span><span class="t-price">18,310.45</span><span class="t-up">▲ +1.12%</span></div>
+    <div class="tick"><span class="t-sym">DOW</span><span class="t-price">42,680.20</span><span class="t-up">▲ +0.45%</span></div>
+    <div class="tick"><span class="t-sym">AAPL</span><span class="t-price">228.40</span><span class="t-up">▲ +1.34%</span></div>
+    <div class="tick"><span class="t-sym">NVDA</span><span class="t-price">132.60</span><span class="t-up">▲ +2.18%</span></div>
+    <div class="tick"><span class="t-sym">MSFT</span><span class="t-price">415.20</span><span class="t-up">▲ +0.72%</span></div>
+    <div class="tick"><span class="t-sym">TSLA</span><span class="t-price">298.70</span><span class="t-dn">▼ -0.92%</span></div>
+    <div class="tick"><span class="t-sym">META</span><span class="t-price">592.30</span><span class="t-up">▲ +1.05%</span></div>
+    <div class="tick"><span class="t-sym">BTC</span><span class="t-price">94,210</span><span class="t-up">▲ +3.41%</span></div>
+    <div class="tick"><span class="t-sym">GOLD</span><span class="t-price">2,980.50</span><span class="t-up">▲ +0.28%</span></div>
+    <div class="tick"><span class="t-sym">JPM</span><span class="t-price">242.10</span><span class="t-dn">▼ -0.18%</span></div>
+    <div class="tick"><span class="t-sym">GS</span><span class="t-price">518.40</span><span class="t-up">▲ +0.55%</span></div>
+    <div class="tick"><span class="t-sym">XOM</span><span class="t-price">118.20</span><span class="t-up">▲ +0.33%</span></div>
+    <div class="tick"><span class="t-sym">ETH</span><span class="t-price">3,840</span><span class="t-up">▲ +2.10%</span></div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">AI-Powered · Wealth Intelligence · 2026</div>
+    <h1>Smarter decisions.<br><em>Faster analysis.</em><br>Better outcomes.</h1>
+    <p class="hero-desc">Accuva Wealth is an AI-powered platform built for financial advisors and portfolio managers. Institutional-grade analysis, real-time market data, and client reporting — all in one place.</p>
+    <div class="hero-btns">
+      <a href="https://accuva-wealth.vercel.app/" target="_blank" class="btn-dark">Launch Platform →</a>
+      <a href="file:///C:/Users/keert/Downloads/accuva-wealth-website_1.html#features" class="btn-outline">Explore Features</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="hc-top">
+        <div class="hc-title">ACCUVA · AI ADVISOR</div>
+        <div class="hc-live"><div class="hc-dot"></div>Live Session</div>
+      </div>
+      <div class="hc-body">
+        <div class="hc-msg">
+          <div class="hc-from">Advisor</div>
+          <div class="hc-bubble">any strong plays in AI infrastructure for Q2?</div>
+        </div>
+        <div class="hc-msg">
+          <div class="hc-from">Accuva</div>
+          <div class="hc-bubble ai-bubble">
+            <div class="ai-resp">
+              <div class="ai-head">▸ HIGH CONVICTION — AI INFRASTRUCTURE</div>
+              <div class="ai-pt">NVDA — data center demand far exceeds supply, pricing power intact</div>
+              <div class="ai-pt">MSFT — Azure acceleration + enterprise AI rollout accelerating</div>
+              <div class="ai-pt">AMZN — AWS re-acceleration, ad growth supporting multiple expansion</div>
+              <div class="ai-head" style="margin-top:0.6rem">▸ KEY RISKS</div>
+              <div class="ai-pt">Export restriction escalation · Rate sensitivity if Fed holds</div>
+              <div class="ai-v">▸ VERDICT: Overweight AI infrastructure — structural demand intact through 2026.<span class="cursor"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-row">
+  <div class="stat-box">
+    <div class="stat-num">8<span>+</span></div>
+    <div class="stat-lbl">AI-powered modules</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-num"><span>∞</span></div>
+    <div class="stat-lbl">Asset classes covered</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-num">Live</div>
+    <div class="stat-lbl">Market prices &amp; news</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-num">Free</div>
+    <div class="stat-lbl">To use, no credit card</div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section id="features" class="features-section">
+  <div class="eyebrow">Platform Features</div>
+  <h2>Everything in one platform</h2>
+  <p class="section-sub">Eight modules covering every aspect of modern wealth management — from portfolio analysis to client reporting.</p>
+  <div class="feat-grid">
+    <div class="feat-card">
+      <div class="feat-icon">◈</div>
+      <div class="feat-title">AI Advisor</div>
+      <div class="feat-desc">Ask anything — casual or formal, shorthand or full sentences. Always responds with sharp, precise analysis grounded in 2026 market context.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">◆</div>
+      <div class="feat-title">Portfolio Analysis</div>
+      <div class="feat-desc">Paste your holdings and receive instant allocation review, concentration risk, Sharpe ratio, and rebalancing recommendations.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">◉</div>
+      <div class="feat-title">Risk Assessment</div>
+      <div class="feat-desc">Stress test portfolios against real-world macro scenarios — rate shocks, recessions, geopolitical events, and credit crises.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">◍</div>
+      <div class="feat-title">Market Insights</div>
+      <div class="feat-desc">Macro environment analysis, sector rotation signals, and thematic opportunities across equities, fixed income, and alternatives.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">◬</div>
+      <div class="feat-title">Forecasting</div>
+      <div class="feat-desc">Bull, Base, and Bear scenarios with probability weightings for any asset or theme — across short, medium, and long-term horizons.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">◑</div>
+      <div class="feat-title">Client Profiles</div>
+      <div class="feat-desc">Built-in CRM. Add clients with AUM, risk profiles, and mandates. Activate a client to apply their context to every AI analysis automatically.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">◐</div>
+      <div class="feat-title">Earnings Calendar</div>
+      <div class="feat-desc">Pre-earnings outlooks for major companies with ACCUVA's bull/neutral/bear stance. One-click deep analysis with full scenario breakdown.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">◪</div>
+      <div class="feat-title">PDF Reports</div>
+      <div class="feat-desc">Generate branded, professional client reports in seconds — portfolio allocation, mandate overview, and AI insights ready to share.</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="eyebrow">Getting Started</div>
+  <h2>Live in under 2 minutes</h2>
+  <p class="section-sub">No installation. No setup. Just your API key and you're ready to go.</p>
+  <div class="how-grid">
+    <div class="how-step">
+      <div class="step-n">01</div>
+      <div class="step-t">Get your API keys</div>
+      <div class="step-d">Get a free Groq key at console.groq.com. Optionally grab a Finnhub key at finnhub.io for live prices and news feeds.</div>
+    </div>
+    <div class="how-step">
+      <div class="step-n">02</div>
+      <div class="step-t">Log in to the platform</div>
+      <div class="step-d">Enter your keys on the login screen. Your credentials never leave your browser — everything goes directly to secure API servers.</div>
+    </div>
+    <div class="how-step">
+      <div class="step-n">03</div>
+      <div class="step-t">Set up your clients</div>
+      <div class="step-d">Add client profiles with AUM, mandates, and risk tolerance. Activate a client and their context applies to every single analysis.</div>
+    </div>
+    <div class="how-step">
+      <div class="step-n">04</div>
+      <div class="step-t">Start advising</div>
+      <div class="step-d">Ask anything. Analyse portfolios. Generate reports. Accuva delivers precision financial intelligence in seconds.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES + NEWS -->
+<section id="capabilities" style="background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="two-col">
+    <div>
+      <div class="eyebrow">AI Intelligence</div>
+      <h2>Thinks like a<br><em>senior analyst</em></h2>
+      <p class="section-sub">ACCUVA is built to operate at the level of a top-tier financial analyst — rigorous, accurate, and always grounded in the current macro environment.</p>
+      <div class="cap-list">
+        <div class="cap-item"><div class="cap-arrow">→</div><div class="cap-txt"><strong>VaR, Beta &amp; Duration</strong> — quantitative risk metrics on any portfolio, on demand</div></div>
+        <div class="cap-item"><div class="cap-arrow">→</div><div class="cap-txt"><strong>Factor Tilts</strong> — value, growth, momentum, quality analysis across all asset classes</div></div>
+        <div class="cap-item"><div class="cap-arrow">→</div><div class="cap-txt"><strong>Macro Stress Testing</strong> — rate cycles, recessions, credit events, inflation resurgence</div></div>
+        <div class="cap-item"><div class="cap-arrow">→</div><div class="cap-txt"><strong>Tail Risk Hedging</strong> — options strategies, inverse ETFs, gold, and cash positioning</div></div>
+        <div class="cap-item"><div class="cap-arrow">→</div><div class="cap-txt"><strong>Accuracy First</strong> — clearly labels facts, analysis, and forecasts. Never guesses.</div></div>
+        <div class="cap-item"><div class="cap-arrow">→</div><div class="cap-txt"><strong>2026 Market Context</strong> — always current, aware of the latest macro environment</div></div>
+      </div>
+    </div>
+    <div id="news">
+      <div class="eyebrow">Live News Feed</div>
+      <h2>Real news.<br><em>Real sources.</em></h2>
+      <p class="section-sub" style="margin-bottom:1.5rem">With a Finnhub API key, Accuva pulls live financial headlines directly into the platform — auto-refreshing every 2 minutes.</p>
+      <div class="news-list">
+        <div class="news-item"><div class="news-src">Reuters</div><div class="news-hl">Fed signals patience as inflation data remains above target heading into Q2 2026</div></div>
+        <div class="news-item"><div class="news-src">Bloomberg</div><div class="news-hl">NVDA Blackwell chip shipments accelerate as hyperscaler demand surges</div></div>
+        <div class="news-item"><div class="news-src">CNBC</div><div class="news-hl">Bitcoin ETF inflows hit record monthly high as institutional adoption expands</div></div>
+        <div class="news-item"><div class="news-src">FT</div><div class="news-hl">Private equity deal activity rebounds sharply as credit conditions ease globally</div></div>
+        <div class="news-item"><div class="news-src">WSJ</div><div class="news-hl">Energy transition spending hits $1.8T globally — advisors eye infrastructure plays</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <h2>The smarter way to<br><em>advise and analyse.</em></h2>
+  <p class="section-sub">Free to use. Runs entirely in your browser. No data is stored or shared. All you need is a free Groq API key.</p>
+  <div class="cta-btns">
+    <a href="https://accuva-wealth.vercel.app/" target="_blank" class="btn-gold-solid">Launch Accuva Wealth →</a>
+    <a href="https://console.groq.com/" target="_blank" class="btn-white-outline">Get Free API Key</a>
+  </div>
+  <p style="margin-top:1.8rem;font-family:&#39;IBM Plex Mono&#39;,monospace;font-size:0.6rem;color:#444;letter-spacing:0.12em">NO CREDIT CARD · NO INSTALLATION · 100% BROWSER-BASED</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="logo-name" style="font-family:&#39;IBM Plex Mono&#39;,monospace;font-weight:500;color:#0D0D0D;letter-spacing:0.1em">ACCUVA WEALTH</span>
+      <p>An AI-powered wealth and asset management platform built for professional financial advisors and portfolio managers.</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Platform</div>
+      <a href="https://accuva-wealth.vercel.app/" target="_blank">Launch App</a>
+      <a href="file:///C:/Users/keert/Downloads/accuva-wealth-website_1.html#features">Features</a>
+      <a href="file:///C:/Users/keert/Downloads/accuva-wealth-website_1.html#how">How It Works</a>
+      <a href="file:///C:/Users/keert/Downloads/accuva-wealth-website_1.html#capabilities">Capabilities</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Resources</div>
+      <a href="https://console.groq.com/" target="_blank">Get Groq API Key</a>
+      <a href="https://finnhub.io/" target="_blank">Get Finnhub API Key</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Powered By</div>
+      <a href="https://groq.com/" target="_blank">Groq AI</a>
+      <a href="https://finnhub.io/" target="_blank">Finnhub</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Accuva Wealth. For professional advisor use only.</div>
+    <div class="footer-copy">AI-powered financial intelligence platform.</div>
+  </div>
+</footer>
+
+
+
+</body></html>
