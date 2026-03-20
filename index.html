@@ -75,28 +75,7 @@ nav {
 }
 .nav-cta:hover { background: var(--gold-light); }
 
-/* TICKER */
-.ticker-bar {
-  margin-top: 64px;
-  background: var(--black);
-  overflow: hidden; position: relative; padding: 0.55rem 0;
-}
-.ticker-track {
-  display: flex; width: max-content;
-  animation: tickscroll 40s linear infinite;
-}
-@keyframes tickscroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-.tick {
-  display: inline-flex; align-items: center; gap: 0.6rem;
-  padding: 0 2rem; border-right: 1px solid rgba(255,255,255,0.08);
-}
-.t-sym { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; font-weight: 500; color: #888; }
-.t-price { font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; color: #ddd; }
-.t-up { font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; color: #4CAF87; }
-.t-dn { font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; color: #E07070; }
-.tf { position:absolute;top:0;bottom:0;width:80px;z-index:2; pointer-events:none; }
-.tf-l { left:0; background:linear-gradient(to right,#0D0D0D,transparent); }
-.tf-r { right:0; background:linear-gradient(to left,#0D0D0D,transparent); }
+
 
 /* HERO */
 .hero {
@@ -373,43 +352,6 @@ footer {
     <a href="https://accuva-wealth.vercel.app" target="_blank" class="nav-cta">Launch Platform →</a>
   </div>
 </nav>
-
-<!-- TICKER -->
-<div class="ticker-bar">
-  <div class="tf tf-l"></div>
-  <div class="tf tf-r"></div>
-  <div class="ticker-track">
-    <div class="tick"><span class="t-sym">S&P 500</span><span class="t-price">5,842.10</span><span class="t-up">▲ +0.84%</span></div>
-    <div class="tick"><span class="t-sym">NASDAQ</span><span class="t-price">18,310.45</span><span class="t-up">▲ +1.12%</span></div>
-    <div class="tick"><span class="t-sym">DOW</span><span class="t-price">42,680.20</span><span class="t-up">▲ +0.45%</span></div>
-    <div class="tick"><span class="t-sym">AAPL</span><span class="t-price">228.40</span><span class="t-up">▲ +1.34%</span></div>
-    <div class="tick"><span class="t-sym">NVDA</span><span class="t-price">132.60</span><span class="t-up">▲ +2.18%</span></div>
-    <div class="tick"><span class="t-sym">MSFT</span><span class="t-price">415.20</span><span class="t-up">▲ +0.72%</span></div>
-    <div class="tick"><span class="t-sym">TSLA</span><span class="t-price">298.70</span><span class="t-dn">▼ -0.92%</span></div>
-    <div class="tick"><span class="t-sym">META</span><span class="t-price">592.30</span><span class="t-up">▲ +1.05%</span></div>
-    <div class="tick"><span class="t-sym">BTC</span><span class="t-price">94,210</span><span class="t-up">▲ +3.41%</span></div>
-    <div class="tick"><span class="t-sym">GOLD</span><span class="t-price">2,980.50</span><span class="t-up">▲ +0.28%</span></div>
-    <div class="tick"><span class="t-sym">JPM</span><span class="t-price">242.10</span><span class="t-dn">▼ -0.18%</span></div>
-    <div class="tick"><span class="t-sym">GS</span><span class="t-price">518.40</span><span class="t-up">▲ +0.55%</span></div>
-    <div class="tick"><span class="t-sym">XOM</span><span class="t-price">118.20</span><span class="t-up">▲ +0.33%</span></div>
-    <div class="tick"><span class="t-sym">ETH</span><span class="t-price">3,840</span><span class="t-up">▲ +2.10%</span></div>
-    <!-- duplicate for loop -->
-    <div class="tick"><span class="t-sym">S&P 500</span><span class="t-price">5,842.10</span><span class="t-up">▲ +0.84%</span></div>
-    <div class="tick"><span class="t-sym">NASDAQ</span><span class="t-price">18,310.45</span><span class="t-up">▲ +1.12%</span></div>
-    <div class="tick"><span class="t-sym">DOW</span><span class="t-price">42,680.20</span><span class="t-up">▲ +0.45%</span></div>
-    <div class="tick"><span class="t-sym">AAPL</span><span class="t-price">228.40</span><span class="t-up">▲ +1.34%</span></div>
-    <div class="tick"><span class="t-sym">NVDA</span><span class="t-price">132.60</span><span class="t-up">▲ +2.18%</span></div>
-    <div class="tick"><span class="t-sym">MSFT</span><span class="t-price">415.20</span><span class="t-up">▲ +0.72%</span></div>
-    <div class="tick"><span class="t-sym">TSLA</span><span class="t-price">298.70</span><span class="t-dn">▼ -0.92%</span></div>
-    <div class="tick"><span class="t-sym">META</span><span class="t-price">592.30</span><span class="t-up">▲ +1.05%</span></div>
-    <div class="tick"><span class="t-sym">BTC</span><span class="t-price">94,210</span><span class="t-up">▲ +3.41%</span></div>
-    <div class="tick"><span class="t-sym">GOLD</span><span class="t-price">2,980.50</span><span class="t-up">▲ +0.28%</span></div>
-    <div class="tick"><span class="t-sym">JPM</span><span class="t-price">242.10</span><span class="t-dn">▼ -0.18%</span></div>
-    <div class="tick"><span class="t-sym">GS</span><span class="t-price">518.40</span><span class="t-up">▲ +0.55%</span></div>
-    <div class="tick"><span class="t-sym">XOM</span><span class="t-price">118.20</span><span class="t-up">▲ +0.33%</span></div>
-    <div class="tick"><span class="t-sym">ETH</span><span class="t-price">3,840</span><span class="t-up">▲ +2.10%</span></div>
-  </div>
-</div>
 
 <!-- HERO -->
 <section class="hero">
